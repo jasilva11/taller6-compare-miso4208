@@ -2,7 +2,9 @@ const express = require('express');
 const resemble = require("resemblejs");
 const app = express();
 const cypress = require('cypress');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var http = require('http');
+
+http.listen(process.env.PORT);
 
 app.use(express.static(__dirname));
 
