@@ -2,6 +2,7 @@ const express = require('express');
 const resemble = require("resemblejs");
 const cypress = require('cypress');
 var app = require('express')();
+var shell = require('shelljs');
 
 app.use(express.static(__dirname));
 
@@ -10,6 +11,7 @@ app.get('/', async function(req, res){
 });
 
 app.get('/compare', async function(req, res){
+	shell.exec('npm install cypress');
 	cypress.run({
 		spec: 'cypress/integration/palette_spec.js'
 	  })
