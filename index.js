@@ -11,6 +11,7 @@ app.get('/', async function(req, res){
 });
 
 app.get('/compare', async function(req, res) {
+	shell.exec('sudo apt install libgtk2.0-0:i386');
 	shell.exec('npm install cypress');
 	cypress.run({
 	spec: 'cypress/integration/palette_spec.js'
