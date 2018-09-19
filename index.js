@@ -14,7 +14,6 @@ app.get('/compare', async function(req, res){
 	shell.exec('npm install -g cypress-cli');
 	shell.exec('cypress install')
 	shell.exec('cypress cypress run .')
-			console.log(results);
 			var img;
 			var text;
 			var diff = resemble('cypress/screenshots/palette_spec.js/test 11.png')
