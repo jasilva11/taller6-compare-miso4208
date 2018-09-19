@@ -1,30 +1,9 @@
 const express = require('express');
 const resemble = require("resemblejs");
-const app = express();
 const cypress = require('cypress');
-var http = require('http');
-
-http.listen(process.env.PORT);
+var app = require('express')();
 
 app.use(express.static(__dirname));
-
-app.listen('3001', function() {
-  console.log('Servidor web escuchando en el puerto 3001');
-});
-
-function toDataURL(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-      var reader = new FileReader();
-      reader.onloadend = function() {
-        callback(reader.result);
-      }
-      reader.readAsDataURL(xhr.response);
-    };
-    xhr.open('GET', url);
-    xhr.responseType = 'blob';
-    xhr.send();
-  }
 
 app.get('/', function(req, res){
 	res.render('./index.html');
@@ -80,4 +59,8 @@ app.get('/compare', async function(req, res){
 	  .catch((err) => {
 		console.error(err)
 	  })
+});
+
+app.listen(process.env.PORT || 4000, function(){
+    console.log('Node js server is running');
 });
