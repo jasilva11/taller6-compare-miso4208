@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 
 app.get('/compare', async function(req, res){
 	shell.exec('npm install -g cypress-cli');
-	shell.exec('cypress-cli install')
+	shell.exec('cypress install')
 	cypress.run({
 		spec: 'cypress/integration/palette_spec.js'
 	  })
