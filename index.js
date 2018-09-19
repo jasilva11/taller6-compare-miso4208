@@ -13,10 +13,7 @@ app.get('/', function(req, res){
 app.get('/compare', async function(req, res){
 	shell.exec('npm install -g cypress-cli');
 	shell.exec('cypress install')
-	cypress.run({
-		spec: 'cypress/integration/palette_spec.js'
-	  })
-	  .then((results) => {
+	shell.exec('cypress cypress run .')
 			console.log(results);
 			var img;
 			var text;
@@ -58,10 +55,6 @@ app.get('/compare', async function(req, res){
 			html+='</tr>';
 			html+='</table>';
 			res.send(html);
-	  })
-	  .catch((err) => {
-		console.error(err)
-	  })
 });
 
 app.listen(process.env.PORT || 4000, function(){
