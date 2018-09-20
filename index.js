@@ -7,12 +7,12 @@ var shell = require('shelljs');
 app.use(express.static(__dirname));
 
 app.get('/', async function(req, res){
-	shell.exec('apt-get install xvfb libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2');
-	res.render('./index.html');
+	res.render('./index0.html');
+	shell.exec('npm install cypress');
+	res.render('./index.html')
 });
 
 app.get('/compare', async function(req, res) {
-	//shell.exec('npm install cypress');
 	cypress.run({
 	spec: 'cypress/integration/palette_spec.js'
   })
