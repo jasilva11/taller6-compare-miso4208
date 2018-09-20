@@ -10,13 +10,8 @@ app.get('/', async function(req, res){
 	res.render('./index.html');
 });
 
-app.get('/install', async function(req, res){
-  shell.exec('npm install cypress');
-});
-
-
 app.get('/compare', async function(req, res) {
-  shell.exec('npm install cypress');
+  //shell.exec('npm install cypress');
   cypress.run({
 	spec: 'cypress/integration/palette_spec.js'
   })
